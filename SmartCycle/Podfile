@@ -7,6 +7,7 @@ target 'SmartCycle' do
 
   # Pods for SmartCycle
 
+  pod "AlamofireImage"
   target 'SmartCycleTests' do
     inherit! :search_paths
     # Pods for testing

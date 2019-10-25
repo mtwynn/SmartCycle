@@ -10,9 +10,10 @@
 		10E2697CBF7F973B50296A1D /* Pods_SmartCycleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEF80108EBE19A85EB33CB0 /* Pods_SmartCycleTests.framework */; };
 		46A6EF156892A41A37FF98FE /* Pods_SmartCycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9473D31F0851DDB65FCDDF8 /* Pods_SmartCycle.framework */; };
 		85CDEEA6AD15188E262AE5E7 /* Pods_SmartCycleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8287F8BC5408BA778CC9249D /* Pods_SmartCycleUITests.framework */; };
+		C6286F962362F3B6007E42A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6286F952362F3B6007E42A2 /* LoginViewController.swift */; };
+		C6286F982362F3C4007E42A2 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6286F972362F3C4007E42A2 /* CaptureViewController.swift */; };
 		C6997ED32362EEA600932881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997ED22362EEA600932881 /* AppDelegate.swift */; };
 		C6997ED52362EEA600932881 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997ED42362EEA600932881 /* SceneDelegate.swift */; };
-		C6997ED72362EEA600932881 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997ED62362EEA600932881 /* ViewController.swift */; };
 		C6997EDA2362EEA600932881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6997ED82362EEA600932881 /* Main.storyboard */; };
 		C6997EDC2362EEA700932881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6997EDB2362EEA700932881 /* Assets.xcassets */; };
 		C6997EDF2362EEA700932881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6997EDD2362EEA700932881 /* LaunchScreen.storyboard */; };
@@ -42,10 +43,11 @@
 		0C3ECA9AFDBCDFBE9434EF78 /* Pods-SmartCycleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCycleTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartCycleTests/Pods-SmartCycleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6213EB4D89760608C6D0E4DD /* Pods-SmartCycleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCycleTests.release.xcconfig"; path = "Target Support Files/Pods-SmartCycleTests/Pods-SmartCycleTests.release.xcconfig"; sourceTree = "<group>"; };
 		8287F8BC5408BA778CC9249D /* Pods_SmartCycleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCycleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6286F952362F3B6007E42A2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C6286F972362F3C4007E42A2 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		C6997ECF2362EEA600932881 /* SmartCycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCycle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6997ED22362EEA600932881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6997ED42362EEA600932881 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C6997ED62362EEA600932881 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C6997ED92362EEA600932881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C6997EDB2362EEA700932881 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6997EDE2362EEA700932881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,11 +130,12 @@
 			children = (
 				C6997ED22362EEA600932881 /* AppDelegate.swift */,
 				C6997ED42362EEA600932881 /* SceneDelegate.swift */,
-				C6997ED62362EEA600932881 /* ViewController.swift */,
 				C6997ED82362EEA600932881 /* Main.storyboard */,
 				C6997EDB2362EEA700932881 /* Assets.xcassets */,
 				C6997EDD2362EEA700932881 /* LaunchScreen.storyboard */,
 				C6997EE02362EEA700932881 /* Info.plist */,
+				C6286F952362F3B6007E42A2 /* LoginViewController.swift */,
+				C6286F972362F3C4007E42A2 /* CaptureViewController.swift */,
 			);
 			path = SmartCycle;
 			sourceTree = "<group>";
@@ -165,7 +168,6 @@
 				01C3C7FC475A0D6C98661D46 /* Pods-SmartCycleUITests.debug.xcconfig */,
 				EE4BA026BBA42F1367F92AF4 /* Pods-SmartCycleUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -180,6 +182,7 @@
 				C6997ECB2362EEA600932881 /* Sources */,
 				C6997ECC2362EEA600932881 /* Frameworks */,
 				C6997ECD2362EEA600932881 /* Resources */,
+				7C3064D52CD379C9E96E439D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,6 +346,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7C3064D52CD379C9E96E439D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartCycle/Pods-SmartCycle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartCycle/Pods-SmartCycle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartCycle/Pods-SmartCycle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F7B7A90A2A73235445E2AF69 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,7 +392,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6997ED72362EEA600932881 /* ViewController.swift in Sources */,
+				C6286F962362F3B6007E42A2 /* LoginViewController.swift in Sources */,
+				C6286F982362F3C4007E42A2 /* CaptureViewController.swift in Sources */,
 				C6997ED32362EEA600932881 /* AppDelegate.swift in Sources */,
 				C6997ED52362EEA600932881 /* SceneDelegate.swift in Sources */,
 			);
