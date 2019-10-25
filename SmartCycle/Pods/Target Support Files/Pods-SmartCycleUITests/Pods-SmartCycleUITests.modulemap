@@ -1,0 +1,6 @@
+framework module Pods_SmartCycleUITests {
+  umbrella header "Pods-SmartCycleUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
