@@ -3,15 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		10E2697CBF7F973B50296A1D /* Pods_SmartCycleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEF80108EBE19A85EB33CB0 /* Pods_SmartCycleTests.framework */; };
 		46A6EF156892A41A37FF98FE /* Pods_SmartCycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9473D31F0851DDB65FCDDF8 /* Pods_SmartCycle.framework */; };
 		85CDEEA6AD15188E262AE5E7 /* Pods_SmartCycleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8287F8BC5408BA778CC9249D /* Pods_SmartCycleUITests.framework */; };
+		C61D88A823666FF800DA6352 /* CloudVisionsAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D88A723666FF800DA6352 /* CloudVisionsAPICaller.swift */; };
 		C6286F962362F3B6007E42A2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6286F952362F3B6007E42A2 /* LoginViewController.swift */; };
 		C6286F982362F3C4007E42A2 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6286F972362F3C4007E42A2 /* CaptureViewController.swift */; };
+		C69407BF23667EFA00443596 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69407BE23667EFA00443596 /* ResultsViewController.swift */; };
 		C6997ED32362EEA600932881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997ED22362EEA600932881 /* AppDelegate.swift */; };
 		C6997ED52362EEA600932881 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997ED42362EEA600932881 /* SceneDelegate.swift */; };
 		C6997EDA2362EEA600932881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6997ED82362EEA600932881 /* Main.storyboard */; };
@@ -43,8 +45,10 @@
 		0C3ECA9AFDBCDFBE9434EF78 /* Pods-SmartCycleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCycleTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartCycleTests/Pods-SmartCycleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6213EB4D89760608C6D0E4DD /* Pods-SmartCycleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCycleTests.release.xcconfig"; path = "Target Support Files/Pods-SmartCycleTests/Pods-SmartCycleTests.release.xcconfig"; sourceTree = "<group>"; };
 		8287F8BC5408BA778CC9249D /* Pods_SmartCycleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCycleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C61D88A723666FF800DA6352 /* CloudVisionsAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudVisionsAPICaller.swift; sourceTree = "<group>"; };
 		C6286F952362F3B6007E42A2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6286F972362F3C4007E42A2 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		C69407BE23667EFA00443596 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		C6997ECF2362EEA600932881 /* SmartCycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartCycle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6997ED22362EEA600932881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6997ED42362EEA600932881 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C61D88A523666FB000DA6352 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6286F972362F3C4007E42A2 /* CaptureViewController.swift */,
+				C6286F952362F3B6007E42A2 /* LoginViewController.swift */,
+				C69407BE23667EFA00443596 /* ResultsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C61D88A623666FDA00DA6352 /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				C61D88A723666FF800DA6352 /* CloudVisionsAPICaller.swift */,
+			);
+			path = "Helper Files";
+			sourceTree = "<group>";
+		};
 		C6997EC62362EEA600932881 = {
 			isa = PBXGroup;
 			children = (
@@ -128,14 +150,14 @@
 		C6997ED12362EEA600932881 /* SmartCycle */ = {
 			isa = PBXGroup;
 			children = (
+				C61D88A623666FDA00DA6352 /* Helper Files */,
+				C61D88A523666FB000DA6352 /* View Controllers */,
 				C6997ED22362EEA600932881 /* AppDelegate.swift */,
 				C6997ED42362EEA600932881 /* SceneDelegate.swift */,
 				C6997ED82362EEA600932881 /* Main.storyboard */,
 				C6997EDB2362EEA700932881 /* Assets.xcassets */,
 				C6997EDD2362EEA700932881 /* LaunchScreen.storyboard */,
 				C6997EE02362EEA700932881 /* Info.plist */,
-				C6286F952362F3B6007E42A2 /* LoginViewController.swift */,
-				C6286F972362F3C4007E42A2 /* CaptureViewController.swift */,
 			);
 			path = SmartCycle;
 			sourceTree = "<group>";
@@ -396,6 +418,8 @@
 				C6286F982362F3C4007E42A2 /* CaptureViewController.swift in Sources */,
 				C6997ED32362EEA600932881 /* AppDelegate.swift in Sources */,
 				C6997ED52362EEA600932881 /* SceneDelegate.swift in Sources */,
+				C61D88A823666FF800DA6352 /* CloudVisionsAPICaller.swift in Sources */,
+				C69407BF23667EFA00443596 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
