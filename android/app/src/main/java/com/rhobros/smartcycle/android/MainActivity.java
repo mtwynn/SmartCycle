@@ -29,6 +29,8 @@ import com.google.api.services.vision.v1.model.AnnotateImageRequest;
 import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mSortBtn;
     String pathToFile;
 
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +77,13 @@ public class MainActivity extends AppCompatActivity {
         mSortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dispatchPictureTakerAction(); // When button is pressed, call this method
+                //dispatchPictureTakerAction(); // When button is pressed, call this method
+                mDatabase.child("currentVal").setValue("Camera opened");
+                startGalleryChooser();
             }
         });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -105,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void startGalleryChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY_IMAGE_REQUEST);
     }
 
 

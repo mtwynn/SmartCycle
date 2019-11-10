@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "15802913546",
+    "firebase_url": "https://rhosmartcycle-19.firebaseio.com",
+    "project_id": "rhosmartcycle-19",
+    "storage_bucket": "rhosmartcycle-19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15802913546:android:9387f1d82e5b2544eea0f3",
+        "android_client_info": {
+          "package_name": "com.rhobros.smartcycle.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15802913546-v2nf7mel972349p4bd4m7me7kq131vp8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rhobros.smartcycle.android",
+            "certificate_hash": "427f63c63fb1ddfc624c2d40932648d203740dc3"
+          }
+        },
+        {
+          "client_id": "15802913546-ooqcan3lepvr4heltqdijo2lbs2nre1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWj3oPrKOJil_zEwYcbf2fzMA1IHpKmIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15802913546-ooqcan3lepvr4heltqdijo2lbs2nre1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
