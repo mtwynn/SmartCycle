@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //dispatchPictureTakerAction(); // When button is pressed, call this method
-                mDatabase.child("currentVal").setValue("Camera opened");
                 startGalleryChooser();
             }
         });
@@ -267,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
     private static class LableDetectionTask extends AsyncTask<Object, Void, String> {
         private final WeakReference<MainActivity> mActivityWeakReference;
         private Vision.Images.Annotate mRequest;
-
+        private List<EntityAnnotation> labels;
         LableDetectionTask(MainActivity activity, Vision.Images.Annotate annotate) {
             mActivityWeakReference = new WeakReference<>(activity);
             mRequest = annotate;
@@ -278,6 +277,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 Log.d(TAG, "created Cloud Vision request object, sending request");
                 BatchAnnotateImagesResponse response = mRequest.execute();
+                labels = response.getResponses().get(0).getLabelAnnotations();
                 return convertResponseToString(response);
 
             } catch (GoogleJsonResponseException e) {
@@ -294,6 +294,17 @@ public class MainActivity extends AppCompatActivity {
             if (activity != null && !activity.isFinishing()) {
                 TextView imageDetail = activity.findViewById(R.id.image_details);
                 imageDetail.setText(result);
+                if (labels != null) {
+                    DatabaseReference ref = activity.mDatabase.child("Current analysis");
+                    for (EntityAnnotation label : labels) {
+                        String description = label.getDescription();
+                        float score = label.getScore();
+                        ref.child(description).setValue(score);
+
+                    }
+                } else {
+                    activity.mDatabase.child("Current analysis").setValue("nothing");
+                }
             }
         }
     }
@@ -315,8 +326,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.d(TAG, "failed to make API request because of other IOException " +
                     e.getMessage());
-        } finally {
-            updateDatabase(mImageDetails.toString());
         }
     }
 
