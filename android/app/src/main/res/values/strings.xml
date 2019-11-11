@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SmartCycle</string>
     <string name="capture">CAPTURE</string>
+    <string name="smartcycle_logo">TODO</string>
 </resources>
