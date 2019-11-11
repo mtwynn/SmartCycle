@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        int currentOrientation = this.getResources().getConfiguration().orientation;
         mImageDetails = findViewById(R.id.imageDetails);
         mImageView = findViewById(R.id.image_view);
         mSortBtn = (Button) findViewById(R.id.sort_btn);
@@ -89,12 +92,13 @@ public class MainActivity extends AppCompatActivity {
         mSortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dispatchPictureTakerAction(); // When button is pressed, call this method
+                dispatchPictureTakerAction(); // When button is pressed, call this method
                 mDatabase.child("currentVal").setValue("Camera opened");
-                startGalleryChooser();
+                //startGalleryChooser();
             }
         });
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
