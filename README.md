@@ -36,7 +36,6 @@ sorts the trash into the respective bins.
 
 **Optional Nice-to-have Stories**
 - [ ] Display results of analysis on application
-- [ ] 
 
 ---
 
