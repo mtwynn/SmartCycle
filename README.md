@@ -29,6 +29,7 @@ sorts the trash into the respective bins.
 
 ### User Stories
 **Required Must-have Stories**
+
 [X] Identify item with Cloud Vision API
 [ ] Sort trash into correct bin by actuating internal motor
 [X] Ability to remove and replace bins 
