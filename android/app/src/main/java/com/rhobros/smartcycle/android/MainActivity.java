@@ -44,6 +44,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                //callCloudVision(bitmap, feature);
+
             }
         }
     }
@@ -290,16 +291,43 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
+            String[] strRecycle = new String[]{"Plastic bottle", "aluminum can"};
+            String[] strFoods = new String[]{"Food", "burger"};
+
+
+            List<String> recyclables = Arrays.asList(strRecycle);
+            List<String> foods = Arrays.asList(strFoods);
+
             MainActivity activity = mActivityWeakReference.get();
+
             if (activity != null && !activity.isFinishing()) {
                 TextView imageDetail = activity.findViewById(R.id.image_details);
                 imageDetail.setText(result);
                 if (labels != null) {
                     DatabaseReference ref = activity.mDatabase.child("Current analysis");
+                    ref.setValue("");
                     for (EntityAnnotation label : labels) {
                         String description = label.getDescription();
                         float score = label.getScore();
-                        ref.child(description).setValue(score);
+
+                        // 1 is Landfill
+                        // 2 is Recycling
+
+                        if (recyclables.contains(description)) {
+                            Log.d("myTag", "contains " + description);
+                            if (score > 0.95) {
+                                ref.child("SORT").setValue(1);
+                                break;
+                            }
+                            else {
+                                ref.child("SORT").setValue(2);
+                            }
+
+                        } else if (foods.contains(description)) {
+                            ref.child("SORT").setValue(2);
+                        } else {
+                            ref.child("SORT").setValue(3);
+                        }
 
                     }
                 } else {
@@ -309,10 +337,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public void updateDatabase(String s) {
-        mDatabase.child("results").setValue(s);
-    }
 
     private void callCloudVision(final Bitmap bitmap) {
         // Switch text to loading
