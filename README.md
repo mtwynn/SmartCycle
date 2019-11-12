@@ -30,13 +30,13 @@ sorts the trash into the respective bins.
 ### User Stories
 **Required Must-have Stories**
 
-[X] Identify item with Cloud Vision API
-[ ] Sort trash into correct bin by actuating internal motor
-[X] Ability to remove and replace bins 
+- [x] Identify item with Cloud Vision API
+- [ ] Sort trash into correct bin by actuating internal motor
+- [x] Ability to remove and replace bins 
 
 **Optional Nice-to-have Stories**
-[ ] Display results of analysis on application
-[ ]
+- [ ] Display results of analysis on application
+- [ ]
 
 ---
 
@@ -57,6 +57,6 @@ sorts the trash into the respective bins.
 
 
 ### Todo
-[ ] Assemble physical build 
-[ ] Write rPi python code to actuate motor 
+- [ ] Assemble physical build 
+- [ ] Write rPi python code to actuate motor 
 
