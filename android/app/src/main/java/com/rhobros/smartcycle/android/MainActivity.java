@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Entity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mMainImage;
     private Button mSortBtn;
     String pathToFile;
+    Uri capturedUri;
     private Feature feature = new Feature();
     private DatabaseReference mDatabase;
     private List<EntityAnnotation> labels;
@@ -88,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
         mSortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dispatchPictureTakerAction(); // When button is pressed, call this method
-                startGalleryChooser();
+                dispatchPictureTakerAction(); // When button is pressed, call this method
+                //startGalleryChooser();
             }
         });
 
@@ -105,7 +107,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                Bitmap bitmap = BitmapFactory.decodeFile(pathToFile);
+                mMainImage.setImageBitmap(bitmap);
+                uploadImage(capturedUri);
+            }
 
+            /* For Gallery
             if (requestCode == 1 && data != null && data.getData() != null) {
                 Uri uri = data.getData();
 
@@ -119,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
+            */
         }
     }
 
@@ -131,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             if (photoFile != null) {
                 pathToFile = photoFile.getAbsolutePath();
                 Uri photoURI = FileProvider.getUriForFile(MainActivity.this, "com.rhobros.smartcycle.android.fileprovider", photoFile);
+                capturedUri = photoURI;
                 takePic.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePic, 1);
             }
@@ -326,7 +336,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (foods.contains(description)) {
                             ref.child("SORT").setValue(2);
                         } else {
-                            ref.child("SORT").setValue(3);
+                            ref.child("SORT").setValue(2);
                         }
 
                     }
