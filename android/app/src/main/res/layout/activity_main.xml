@@ -14,14 +14,15 @@
         android:layout_height="68dp"
         android:background="#93C47D"
         android:text="@string/capture"
+        app:fontFamily="@font/siffon"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.889" />
+        app:layout_constraintVertical_bias="0.924" />
 
     <TextView
         android:id="@+id/imageDetails"
@@ -35,8 +36,8 @@
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="410dp"
-        android:layout_height="342dp"
+        android:layout_width="300dp"
+        android:layout_height="235dp"
         android:contentDescription="@string/smartcycle_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,5 +45,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/smart_cycle_logo" />
+
+    <TextView
+        android:id="@+id/RecycleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECYCLED ITEMS:"
+        app:fontFamily="@font/siffon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.432" />
+
+    <TextView
+        android:id="@+id/TrashLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="TRASHED ITEMS:"
+        app:fontFamily="@font/siffon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.534" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Press 'CAPTURE' to begin \n2. Capture the photo \n3. The photo will be processed \n4. SmartCycle will determine \n   it is trash or recyclable"
+        app:fontFamily="@font/siffon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

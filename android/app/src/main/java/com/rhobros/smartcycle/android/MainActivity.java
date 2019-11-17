@@ -11,8 +11,10 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -57,9 +59,14 @@ public class MainActivity extends AppCompatActivity {
     public static final int CAMERA_IMAGE_REQUEST = 3;
 
     private TextView mImageDetails;
+    private TextView recyclable_counter;
+    private TextView trash_counter;
     private ImageView mImageView;
     private Button mSortBtn;
     String pathToFile;
+
+    ProgressBar progressBar;
+    TextView progressText;
 
     private DatabaseReference mDatabase;
 
@@ -67,6 +74,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        progressBar = findViewById(R.id.progressBar);
+        progressText = findViewById(R.id.progress_text);
+
+        progressBar.setMax(100);
+        progressBar.setScaleY(3f);
+
+        progressAnimation();
 
         int currentOrientation = this.getResources().getConfiguration().orientation;
         mImageDetails = findViewById(R.id.imageDetails);
@@ -90,6 +108,15 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
     }
+
+
+
+    public void progressAnimation(){
+        ProgressBarAnimation anim =new ProgressBarAnimation(this, progressBar, progressText, 0f, 100f);
+        anim.setDuration(8000);
+        progressBar.setAnimation(anim);
+    }
+
 
 
     @Override
