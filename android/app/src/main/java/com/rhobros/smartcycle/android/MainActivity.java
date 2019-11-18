@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.os.Handler;
+import android.widget.TextView;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -126,13 +129,9 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
     protected void setupApp() {
-        //mImageDetails = findViewById(R.id.image_);
-        mMainImage = findViewById(R.id.image_view);
         mSortBtn = (Button) findViewById(R.id.sort_btn);
 
         dialog = new ProgressDialog(MainActivity.this);
-        //ImageView loading = (ImageView) findViewById(R.id.image_view);
-        //animation = (AnimationDrawable) loading.getDrawable();
 
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
