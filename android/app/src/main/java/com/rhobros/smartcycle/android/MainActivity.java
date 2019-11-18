@@ -16,7 +16,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+>>>>>>> cdd7ea54226721f541e2b7fc1bb91f5ce9994544
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,8 +84,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
         mImageDetails = findViewById(R.id.image_details);
         mMainImage = findViewById(R.id.image_view);
+=======
+        int currentOrientation = this.getResources().getConfiguration().orientation;
+        mImageDetails = findViewById(R.id.imageDetails);
+        mImageView = findViewById(R.id.image_view);
+>>>>>>> cdd7ea54226721f541e2b7fc1bb91f5ce9994544
         mSortBtn = (Button) findViewById(R.id.sort_btn);
 
         if (Build.VERSION.SDK_INT >= 23) {
@@ -91,10 +102,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dispatchPictureTakerAction(); // When button is pressed, call this method
+<<<<<<< HEAD
+=======
+                mDatabase.child("currentVal").setValue("Camera opened");
+>>>>>>> cdd7ea54226721f541e2b7fc1bb91f5ce9994544
                 //startGalleryChooser();
             }
         });
 
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
