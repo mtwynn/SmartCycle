@@ -1,10 +1,11 @@
 package com.rhobros.smartcycle.android;
 
 import android.Manifest;
-import android.content.Entity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -13,15 +14,15 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-<<<<<<< HEAD
 import android.widget.Toast;
-=======
+import android.os.Handler;
+import android.widget.TextView;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
->>>>>>> cdd7ea54226721f541e2b7fc1bb91f5ce9994544
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int CAMERA_PERMISSIONS_REQUEST = 2;
     public static final int CAMERA_IMAGE_REQUEST = 3;
 
-    private TextView mImageDetails;
+    //private TextView mImageDetails;
     private ImageView mMainImage;
     private Button mSortBtn;
     String pathToFile;
@@ -78,39 +79,74 @@ public class MainActivity extends AppCompatActivity {
     private Feature feature = new Feature();
     private DatabaseReference mDatabase;
     private List<EntityAnnotation> labels;
+    private AnimationDrawable animation;
+    private ProgressDialog dialog;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupApp();
 
-<<<<<<< HEAD
-        mImageDetails = findViewById(R.id.image_details);
-        mMainImage = findViewById(R.id.image_view);
-=======
-        int currentOrientation = this.getResources().getConfiguration().orientation;
-        mImageDetails = findViewById(R.id.imageDetails);
-        mImageView = findViewById(R.id.image_view);
->>>>>>> cdd7ea54226721f541e2b7fc1bb91f5ce9994544
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            hideSystemUI();
+        }
+    }
+
+    private void hideSystemUI() {
+        // Enables regular immersive mode.
+        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
+        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        // Set the content to appear under the system bars so that the
+                        // content doesn't resize when the system bars hide and show.
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        // Hide the nav bar and status bar
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+
+    // Shows the system bars by removing all the flags
+// except for the ones that make the content appear under the system bars.
+    private void showSystemUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
+    protected void setupApp() {
         mSortBtn = (Button) findViewById(R.id.sort_btn);
+
+        dialog = new ProgressDialog(MainActivity.this);
 
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
         }
 
+
+
         mSortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dispatchPictureTakerAction(); // When button is pressed, call this method
-<<<<<<< HEAD
-=======
-                mDatabase.child("currentVal").setValue("Camera opened");
->>>>>>> cdd7ea54226721f541e2b7fc1bb91f5ce9994544
                 //startGalleryChooser();
             }
         });
 
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
@@ -123,13 +159,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
+
             if (requestCode == 1) {
                 Bitmap bitmap = BitmapFactory.decodeFile(pathToFile);
                 mMainImage.setImageBitmap(bitmap);
                 uploadImage(capturedUri);
             }
 
-            /* For Gallery
+            // For Gallery
+
+            /*
             if (requestCode == 1 && data != null && data.getData() != null) {
                 Uri uri = data.getData();
 
@@ -144,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
             */
+
         }
     }
 
@@ -211,7 +251,13 @@ public class MainActivity extends AppCompatActivity {
                                 MAX_DIMENSION);
 
                 callCloudVision(bitmap);
-                mMainImage.setImageBitmap(bitmap);
+
+                dialog = new ProgressDialog(MainActivity.this);
+                dialog.setTitle("Progress");
+                dialog.setMessage("Scanning for image");
+                dialog.show();
+
+                //mMainImage.setImageBitmap(bitmap);
 
             } catch (IOException e) {
                 Log.d(TAG, "Image picking failed because " + e.getMessage());
@@ -317,8 +363,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            String[] strRecycle = new String[]{"Plastic bottle", "aluminum can"};
-            String[] strFoods = new String[]{"Food", "burger"};
+            String[] strRecycle = new String[]{
+                    "Plastic bottle", "Aluminum can", "Beverage can", "Tin can",
+                    "Glass", "Glass bottle",
+
+            };
+            String[] strFoods = new String[]{"Food", "Burger", "Junk food", "Drink", "Snack", "Fast Food"};
 
 
             List<String> recyclables = Arrays.asList(strRecycle);
@@ -326,33 +376,41 @@ public class MainActivity extends AppCompatActivity {
 
             MainActivity activity = mActivityWeakReference.get();
 
+            boolean recycle = false;
             if (activity != null && !activity.isFinishing()) {
-                TextView imageDetail = activity.findViewById(R.id.image_details);
-                imageDetail.setText(result);
+                //TextView imageDetail = activity.findViewById(R.id.image_details);
+                //imageDetail.setText(result);
                 if (labels != null) {
                     DatabaseReference ref = activity.mDatabase.child("Current analysis");
                     ref.setValue("");
                     for (EntityAnnotation label : labels) {
                         String description = label.getDescription();
                         float score = label.getScore();
+                        Log.d("myTag", description);
 
                         // 1 is Landfill
                         // 2 is Recycling
 
                         if (recyclables.contains(description)) {
-                            Log.d("myTag", "contains " + description);
-                            if (score > 0.95) {
+                            if (score > 0.70) {
                                 ref.child("SORT").setValue(1);
+                                recycle = true;
                                 break;
                             }
                             else {
                                 ref.child("SORT").setValue(2);
+                                recycle = false;
+                                break;
                             }
 
                         } else if (foods.contains(description)) {
+                            recycle = false;
                             ref.child("SORT").setValue(2);
+                            break;
                         } else {
+                            recycle = false;
                             ref.child("SORT").setValue(2);
+                            break;
                         }
 
                     }
@@ -360,18 +418,37 @@ public class MainActivity extends AppCompatActivity {
                     activity.mDatabase.child("Current analysis").setValue("nothing");
                 }
             }
+            activity.dialog.dismiss();
+
+            if (recycle) {
+                activity.setContentView(R.layout.success_screen);
+            } else {
+                activity.setContentView(R.layout.failure_screen);
+            }
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    activity.setContentView(R.layout.activity_main);
+                    activity.setupApp();
+
+                }
+            }, 5000);
+
         }
     }
 
 
     private void callCloudVision(final Bitmap bitmap) {
         // Switch text to loading
-        mImageDetails.setText("Updating...");
+        //mImageDetails.setText("Updating...");
 
         // Do the real work in an async task, because we need to use the network anyway
         try {
             AsyncTask<Object, Void, String> labelDetectionTask = new LableDetectionTask(this, prepareAnnotationRequest(bitmap));
             labelDetectionTask.execute();
+
 
         } catch (IOException e) {
             Log.d(TAG, "failed to make API request because of other IOException " +

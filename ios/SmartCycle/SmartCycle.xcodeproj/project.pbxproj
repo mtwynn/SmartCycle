@@ -21,6 +21,7 @@
 		C6997EDF2362EEA700932881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6997EDD2362EEA700932881 /* LaunchScreen.storyboard */; };
 		C6997EEA2362EEA700932881 /* SmartCycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997EE92362EEA700932881 /* SmartCycleTests.swift */; };
 		C6997EF52362EEA700932881 /* SmartCycleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6997EF42362EEA700932881 /* SmartCycleUITests.swift */; };
+		C6BB84F02382446700F45065 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6BB84EF2382446700F45065 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		C6997EF02362EEA700932881 /* SmartCycleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCycleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6997EF42362EEA700932881 /* SmartCycleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCycleUITests.swift; sourceTree = "<group>"; };
 		C6997EF62362EEA700932881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6BB84EF2382446700F45065 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9473D31F0851DDB65FCDDF8 /* Pods_SmartCycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEEF80108EBE19A85EB33CB0 /* Pods_SmartCycleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCycleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5A03F4538BB7E99BF02752 /* Pods-SmartCycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCycle.debug.xcconfig"; path = "Target Support Files/Pods-SmartCycle/Pods-SmartCycle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				C6997EDB2362EEA700932881 /* Assets.xcassets */,
 				C6997EDD2362EEA700932881 /* LaunchScreen.storyboard */,
 				C6997EE02362EEA700932881 /* Info.plist */,
+				C6BB84EF2382446700F45065 /* GoogleService-Info.plist */,
 			);
 			path = SmartCycle;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6997EDF2362EEA700932881 /* LaunchScreen.storyboard in Resources */,
+				C6BB84F02382446700F45065 /* GoogleService-Info.plist in Resources */,
 				C6997EDC2362EEA700932881 /* Assets.xcassets in Resources */,
 				C6997EDA2362EEA600932881 /* Main.storyboard in Resources */,
 			);

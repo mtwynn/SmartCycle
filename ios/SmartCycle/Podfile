@@ -8,6 +8,9 @@ target 'SmartCycle' do
   # Pods for SmartCycle
 
   pod "AlamofireImage"
+  pod "Firebase"
+  pod "Firebase/Database"
+
   target 'SmartCycleTests' do
     inherit! :search_paths
     # Pods for testing
