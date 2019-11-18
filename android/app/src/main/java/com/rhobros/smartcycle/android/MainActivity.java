@@ -75,17 +75,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        progressBar = findViewById(R.id.progressBar);
-        progressText = findViewById(R.id.progress_text);
-
-        progressBar.setMax(100);
-        progressBar.setScaleY(3f);
-
-        progressAnimation();
-
         int currentOrientation = this.getResources().getConfiguration().orientation;
         mImageDetails = findViewById(R.id.imageDetails);
         mImageView = findViewById(R.id.image_view);
@@ -109,12 +98,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void beginAnimation(){
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        progressBar = findViewById(R.id.progressBar);
+        progressText = findViewById(R.id.progress_text);
+
+        progressBar.setMax(100);
+        progressBar.setScaleY(3f);
+    }
 
 
     public void progressAnimation(){
         ProgressBarAnimation anim =new ProgressBarAnimation(this, progressBar, progressText, 0f, 100f);
         anim.setDuration(8000);
         progressBar.setAnimation(anim);
+        progressAnimation();
     }
 
 
